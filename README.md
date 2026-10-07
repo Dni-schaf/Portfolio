@@ -37,6 +37,6 @@ Heute wende ich dieses analytische Denken in der **Software-Qualitätssicherung*
 
 ---
 
-### 📬 Kontakt
+### Kontakt
 
 - **LinkedIn:** *under construction*

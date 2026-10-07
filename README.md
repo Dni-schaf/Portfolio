@@ -3,6 +3,8 @@
 
 Ich absolviere aktuell eine intensive Weiterbildung bei **Master School Institute of Technology** mit dem Schwerpunkt auf **Python-Grundlagen** und **automatisierter Software-Qualitätssicherung**. Ich suche ab Januar 2027 eine Einstiegsposition als **Junior Test Automation Engineer** oder **QA Engineer**.
 
+---
+
 ### Was mich ausmacht: Von der Infografik zur Testautomatisierung
 
 Mit meinem Hintergrund im **Kommunikationsdesign** und jahrelanger Erfahrung als **Infografikerin** bin ich es gewohnt, komplexe Systeme zu durchdringen, Expertenwissen zu strukturieren und die Perspektive der Nutzer einzunehmen. 

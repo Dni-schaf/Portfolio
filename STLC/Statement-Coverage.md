@@ -35,7 +35,7 @@ is_shipping_free(50,1,False)
 ## Aufgabe 1:
 Zeichne ein Zustandsübergangsdiagramm (gerichteter azyklischer Graph) für diesen Codeabschnitt
 
-![Zustandsübergangsdiagramm](State-Transition-Diagram_02)
+![Zustandsübergangsdiagramm](State-Transition-Diagram_02.png)
 
 **Auswertung:** Das Diagramm macht logische Fehler im Code sichtbar. Der Zustand des "Volle Versandkosten zu zahlen" wird nicht erreicht. Daher habe ich den Code wie folgt korrigiert:
 
@@ -55,3 +55,19 @@ def is_shipping_free(price, numberOfItems, isPrimeShoppingMember):
         print("Additional Statement 5")
         return False
 ```
+Danach würde das Diagramm nun so aussehen:
+
+![Zustandsübergangsdiagramm](State-Transition-Diagram_03.png)
+
+## Aufgabe 2:
+Berechne die Anweisungsüberdeckung (Statement Coverage) und die Zweigüberdeckung (Branch Coverage)
+
+**Statement Coverage (mit korrigierten Code):** 75%
+*Die if und elif Zeilen sind abgedeckt, aber die neuen else Zeilen werden mit den alten Tests nicht abgedeckt. Es braucht also einen weiteren Test, um auf 100% Statement Coverage zu kommen. Zum Beispiel:
+
+``` Python
+is_shipping_free(30,6,False)
+```
+
+**Branch Coverage (mit korrigierten Code):** 75%
+*Die if und elif Branches sind abgedeckt, aber der neue else Branch ist mit den alten Tests nicht abgedeckt. Es braucht also einen weiteren Test, um auf 100% Branch Coverage zu kommen. Zum Beispiel:

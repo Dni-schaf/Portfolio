@@ -18,7 +18,7 @@ Heute wende ich dieses analytische Denken in der **Software-Qualitätssicherung*
 
 ### Tech Stack & Werkzeuge
 
-- **Sprachen:** Python 3.x, SQL, HTML/CSS (Grundlagen) und JavaScript
+- **Sprachen:** Python, SQL, HTML/CSS (Grundlagen) und JavaScript
 - **Test Automation:** pytest, Selenium WebDriver, Playwright, Requests (API Testing)
 - **QA Konzept:** Page Object Pattern (POM), Unit Testing, Integration Testing, Test Case Design
 - **Tools & Workflow:** Git, GitHub, Postman, VS Code, CI/CD (GitHub Actions Grundlagen)

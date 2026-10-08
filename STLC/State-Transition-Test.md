@@ -11,9 +11,26 @@ Der Benutzer sieht zuerst den Startbildschirm, dann den Bildschirm „Warte auf 
 
 ---
 
+Zustände:
+- Startscreen
+- PIN-Screen
+- Error-Screen
+- Konto-Screen
+- Karte-wird-eingezogen-Screen
+
+Übergänge
+- Karte eingeben
+- PIN eingeben
+- Vorgang abbrechen
+
+Ereignisse:
+- neuen Zustand erreichen
+- Karte einziehen
+
+
 ## Zustandsübergangstabelle
 
-| State         | Action                 | New State           |
+| Zustand       | Übergang               | Ereignis            |
 | :---          | :---                   | :---                |
 | Start-Screen	| Karte eingeben         | PIN-Screen          |
 | PIN-Screen	  | richtigen PIN eingeben | Konto-Screen (Ende) |
@@ -21,9 +38,10 @@ Der Benutzer sieht zuerst den Startbildschirm, dann den Bildschirm „Warte auf 
 | PIN-Screen    | Vorgang abbrechen      | Start-Screen        |
 | Error-Screen  | interne Evaluation counter > 3  | Karte-wird-eingezogen-Screen (Ende) |
 | Error-Screen  | interne Evaluation counter <= 3 | PIN-Screen |
-| Error-Screen  | cancel                 | Start-Screen        |
+| Error-Screen  | Vorgang abbrechen      | Start-Screen        |
 
 
 ## Zustandsübergangsdiagramm
 
 ![Zustandsübergangdiagramm](Stat-Transition-Diagram.png "Zustandsübergangdiagramm")
+

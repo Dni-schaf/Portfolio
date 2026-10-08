@@ -13,18 +13,15 @@ Der Benutzer sieht zuerst den Startbildschirm, dann den Bildschirm „Warte auf 
 
 ## Zustandsübergangstabelle
 
-| State | Action | New State|
-| :--- | :--- | :--- |
-| Start-Screen	| Karte eingeben | PIN-Screen (Versuch 1) |
-|  PIN-Screen (Versuch 1)	| richtigen PIN eingeben | Konto-Screen |
-|  PIN-Screen (Versuch 1)	| falschen PIN eingeben |  PIN-Screen (Versuch 2) |
-|  PIN-Screen (Versuch 1)	| Vorgang abbrechen | Start-Screen |
-|  PIN-Screen (Versuch 2)	| richtigen PIN eingeben | Konto-Screen |
-|  PIN-Screen (Versuch 2)	| falschen PIN eingeben |  PIN-Screen (Versuch 3) |
-|  PIN-Screen (Versuch 2)	| Vorgang abbrechen | Start-Screen |
-|  PIN-Screen (Versuch 3)	| richtigen PIN eingeben | Konto-Screen |
-|  PIN-Screen (Versuch 3)	| falschen PIN eingeben |  Karte-wird-eingezogen-Screen |
-|  PIN-Screen (Versuch 3)	| Vorgang abbrechen | Start-Screen |
+| State         | Action                 | New State           |
+| :---          | :---                   | :---                |
+| Start-Screen	| Karte eingeben         | PIN-Screen          |
+| PIN-Screen	  | richtigen PIN eingeben | Konto-Screen (Ende) |
+| PIN-Screen	  | falschen PIN eingeben  | Error-Screen        |
+| PIN-Screen    | Vorgang abbrechen      | Start-Screen        |
+| Error-Screen  | interne Evaluation counter > 3  | Karte-wird-eingezogen-Screen (Ende) |
+| Error-Screen  | interne Evaluation counter <= 3 | PIN-Screen |
+| Error-Screen  | cancel                 | Start-Screen        |
 
 
 ## Zustandsübergangsdiagramm

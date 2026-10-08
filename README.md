@@ -5,6 +5,12 @@ Ich absolviere aktuell eine intensive Weiterbildung bei **Master School Institut
 
 ---
 
+### Kontakt
+
+- **LinkedIn:** *under construction*
+
+---
+
 ### Was mich ausmacht: Von der Infografik zur Testautomatisierung
 
 Mit meinem Hintergrund im **Kommunikationsdesign** und jahrelanger Erfahrung als **Infografikerin** bin ich es gewohnt, komplexe Systeme zu durchdringen, Expertenwissen zu strukturieren und die Perspektive der Nutzer einzunehmen. 
@@ -19,7 +25,7 @@ Heute wende ich dieses analytische Denken in der **Software-Qualitätssicherung*
 ### Tech Stack & Werkzeuge
 
 - **Sprachen:** Python, SQL, HTML/CSS (Grundlagen) und JavaScript
-- **Test Automation:** pytest, Selenium WebDriver, Playwright, Requests (API Testing)
+- **Test Automation:** pytest, Selenium WebDriver, Playwright, API Testing
 - **QA Konzept:** Page Object Pattern (POM), Unit Testing, Integration Testing, Test Case Design
 - **Tools & Workflow:** Git, GitHub, Postman, VS Code, CI/CD (GitHub Actions Grundlagen)
 
@@ -37,8 +43,4 @@ Heute wende ich dieses analytische Denken in der **Software-Qualitätssicherung*
 - **Masterschool:** Software Testing & QA Automation Track (Python)
   - *under construction*
 
----
 
-### Kontakt
-
-- **LinkedIn:** *under construction*

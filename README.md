@@ -42,5 +42,7 @@ Heute wende ich dieses analytische Denken in der **Software-Qualitätssicherung*
 
 - **Masterschool:** Software Testing & QA Automation Track (Python)
   - *under construction*
+ 
+- **PCEP-Certified** Entry-Level Python Programmer
 
 

@@ -26,14 +26,10 @@ Webshop mit folgenden Grundfunktionen:
 **Ursprünglich vage formulierte Anforderung:**
 Nutzer sollen Produkte mit einem 5-Sterne-System bewerten und zusätzlich schriftliches Feedback hinterlassen können.
 
----
-
 ### **2. Altersverifikation für alkoholische Produkte**
 
 **Ursprünglich vage formulierte Anforderung:**
 Alkoholische Produkte erfordern eine Altersverifikation. Beim Aufrufen der Kategorie soll ein Fenster erscheinen, in dem Nutzer ihr Alter angeben müssen (18+), bevor sie Zugriff erhalten.
-
----
 
 ### **3. Änderungen bei den Versandkosten**
 
@@ -44,13 +40,13 @@ Versandkosten entfallen ab einem bestimmten Bestellwert. Darunter fallen Versand
 
 #### Fünf-Sterne-System:
 - **Wertebereich** (mit einem 5-Sterne-System bewerten):
-  - zu klären: 0 Sterne-Vergabe erlaubt? Oder zählt es als dann als noch nicht bewertet?
+  - Ist 0 Sterne-Vergabe erlaubt? Oder zählt es als dann als noch nicht bewertet?
 - **Pflichtfelder:**
-  -  zu klären: Ist die Vergabe von Sternen verpflichtend für die Abgabe einer Rezension (Nur Freitext auch möglich?)
-  -  zu klären: muss User eingeloggt sein? Anonyme Bewertung möglich?
+  -  Ist die Vergabe von Sternen verpflichtend für die Abgabe einer Rezension (Nur Freitext auch möglich?)
+  -  Muss User eingeloggt sein? Anonyme Bewertung möglich?
 - **Limit:**
-   - zu klären: kann nur maximal eine Rezension pro Produkt eingereicht werden?
-   - zu klären: Muss das Produkt zuvor gekauft worden sein um es zu bewerten
+   - Kann nur maximal eine Rezension pro Produkt eingereicht werden?
+   - Muss das Produkt zuvor gekauft worden sein um es zu bewerten
 - **Korrektur:**
   - Vor dem Absenden kann die eingabe und die Sternen vergabe sooft geändert werden wie der user möchte
   - zu klären: kann eine bereits veröffentlichte Bewertung nachträglich bearbeitet oder gelöscht werden vom User selbst
@@ -59,19 +55,56 @@ Versandkosten entfallen ab einem bestimmten Bestellwert. Darunter fallen Versand
 - **Optional:**
   - Textfeld darf Leergelassen werden
 - **Text:**
-  - zu klären: Gibt es eine minimale Eingabelänge z.B. 5 Zeichen um sinnlose Eingaben zu minimieren?
-  - zu klären: Gibt es eine maximale Zeichenzahl z.B. 500 Zeichen
-  - zu klären: Welche Alphabete/Sprachen sollen unterstützt werden
+  - Gibt es eine minimale Eingabelänge z.B. 5 Zeichen um sinnlose Eingaben zu minimieren?
+  - Gibt es eine maximale Zeichenzahl z.B. 500 Zeichen
+  - Welche Alphabete/Sprachen sollen unterstützt werden
 - **Sicherheit und Moderation:**
-  - zu klären gibt es automatischen “Schimpfwortbereinigung” oder eine Freigabe vorab
-  - zu klären: gibt es einen Melden-Button für unangebrachte Kommentare
+  - Gibt es automatischen “Schimpfwortbereinigung” oder eine Freigabe vorab
+  - Gibt es einen Melden-Button für unangebrachte Kommentare
  
 #### Anzeige & Darstellung (Produktseite):
 - **Veröffentlichung:**
-  - zu klären: Nach erfolgreichem Absenden erscheint die Bewertung direkt auf der Detailseite des jeweiligen Produkts oder erst Freigabe?
+  - Nach erfolgreichem Absenden erscheint die Bewertung direkt auf der Detailseite des jeweiligen Produkts oder erst Freigabe?
 - **Durchschnittsberechnung:**
   - Der Gesamt-Mittelwert der Sterne sowie die Gesamtzahl der Stimmen werden auf der Produktseite dynamisch neu berechnet und angezeigt.
-  - zu klären: Auf wie viel Stellen nach dem Komme runden? z.B. auf eine 4.5
+  - Auf wie viel Stellen nach dem Komme runden? z.B. auf eine 4.5
+ 
+#### Altersverifikation:
+- **Eingabe:**
+  - In welchen Format soll das Alter angegeben werden Beispiel DD-MM-JJJJ
+  - Gibt es eine Validierung der Eingabe. Werden unsinniger Eingaben Bspw. die in der Zukunft liegen oder Menschen die angeblich über 150 Jahre alt sind abgelehnt?
+- **Kategorien:**
+  - Bei welchen Kategorien ist eine Altersfreigabe erforderlich
+- **Datenspeicherung:**
+  - Wie wird die Altersinformation im Profil gespeichert 
+    - ist nach dem aus und wieder einloggen noch gültig?
+    - oder ist die Freigabe nur für die aktuelle Sitzung gültig?
+    - oder muss die Eingabe pro Aktikel aus der Katergorie durchgeführt werden?
+- **Verhalten bei Ablehnung:**
+  - Was passiert, wenn der User unter 18 ist?
+    - Wird man zurück zu Startseite geleitet.
+    - Kann man die Produkte sehen, aber nicht in den Warenkorb legen.
+    - Wird man auf eine Seite geleitet, wo diese +18 Katergorien ausgeblendet sind?
+- **Sicherheit:**
+  - Reicht rechtlich die reine Alterseingabe aus?
+  - Kann er man das Fenster schießen und die Eingabe wiederholen? Bypass-Gefahr
+  - Was ist wenn man nicht über die Kategorie kommt, sondern über einen Direktlink. Kommt dennoch die Sicherheitsabfrage?
+
+#### Änderungen bei den Versandkosten:
+- **Ausgangswerte:**
+  - Wie hoch sind die Versandkosten normalerweise.
+  - Sind die Versandkosten weltweit gleich oder unterscheiden sie sich beispielsweise für In- und Ausland, EU oder Weltweit
+  - Gibt es Zuschläge? gekühlte Wahre, Expresslieferung, hohes Gewicht bei Beispielsweise Getränkelieferungen
+- **Schwellenwert**
+  - Ab welche Betrag entfallen die Versandkosten.
+  - Was dient als Berechnungsgrundlage? Brutto oder Netto, vor Rabatt- oder Gutschein-Codes oder danach?
+  - Zählen Zuschläge, wie zum Beispiel Expresskosten und Pfand mit zum Erreichen des Grenzwertes oder nur der reine Produktpreis?
+  - Was passiert, wenn nach der Bestellung ein Teil stoniert wird und die Bestellung wieder unter den Grenzwert sinkt?
+- **Sonderregelunge:**
+  - Gibt es Sonderregelungen für Sperrgut oder gekühlte waren, die trotz des erreichten Schwellenwerts Versandkosten zahlen müssen
+- **UI/UX Hinweise**
+  - Wird darauf hingewiesen, ab wann keine Versandkosten anfallen, wenn ja wo?
+  - Ändert sich die Anzeige im Warenkorb in echtzeit?
 
 ## Detailierte Anforderung:
 

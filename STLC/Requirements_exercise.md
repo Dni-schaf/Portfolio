@@ -110,19 +110,32 @@ Versandkosten entfallen ab einem bestimmten Bestellwert. Darunter fallen Versand
 
 ### **1. Bewertungssystem für Produkte**
 Nutzer sollen Produkte mit einem 5-Sterne-System bewerten. 
-Die Vergabe von mindestens 1 bis maximal 5 Sterne ist möglich, wenn der User eingeloggt ist und das Produkt zuvor auch gekauft hat.
-Vor dem Absenden kann die Eingabe und die Sternen vergabe sooft geändert werden wie der User möchte.
-Es ist nur eine Rezension pro Artikel pro User möglich. 
-Der Kommentar kann nach dem Absenden bearbeitet oder gelöscht werden, wenn der User eingeloggt ist.
-Für ein Rezension ist es Pflicht mindestens 1 Stern zu vergeben. Ist kein Stern vergeben kann die Eingabe nicht abgesendet werden.
+- Die Vergabe von mindestens 1 bis maximal 5 Sterne ist möglich, wenn der User eingeloggt ist und das Produkt zuvor auch gekauft hat.
+- Vor dem Absenden kann die Eingabe und die Sternen vergabe sooft geändert werden wie der User möchte.
+- Es ist nur eine Rezension pro Artikel pro User möglich. 
+- Für ein Rezension ist es Pflicht mindestens 1 Stern zu vergeben. Ist kein Stern vergeben kann die Eingabe nicht abgesendet werden.
 Es ist möglich zusätzlich schriftliches Feedback abzugeben.
-Der Freitext darf maximal 500 Zeichen habene, eine untere Grenze gibt es nicht. 
-Es werden neben dem lateinischen Alphabet auch zusätzliche Zeichen aus europäischen Sprachen unterstützt. Eine genaue List muss erstellt werden.
-Es ist weder eine automatische "Schimpfwortbereinigung" oder eine vorab Freigabe oder ein Melden-Button vorgesehen.*
-Nach erfolgreichem Absenden erscheint die Bewertung direkt auf der Detailseite des jeweiligen Produkts.
-Der Gesamt-Mittelwert der Sterne sowie die Gesamtzahl der Stimmen werden auf der Produktseite dynamisch neu berechnet und angezeigt.
-Der Gesamt-Mittelwert wird in Form von ausgefüllten bzw. teilausgefüllten Sternen gezeigt. Die Gesammtzahl als Zahl in Klammern dahinter.
+- Der Freitext darf maximal 500 Zeichen habene, eine untere Grenze gibt es nicht. 
+- Es werden neben dem lateinischen Alphabet auch zusätzliche Zeichen aus europäischen Sprachen unterstützt. Eine genaue List muss erstellt werden.
+- Es ist weder eine automatische "Schimpfwortbereinigung" oder eine vorab Freigabe oder ein Melden-Button vorgesehen.*
+- Nach erfolgreichem Absenden erscheint die Bewertung direkt auf der Detailseite des jeweiligen Produkts.
+- Der Gesamt-Mittelwert der Sterne sowie die Gesamtzahl der Stimmen werden auf der Produktseite dynamisch neu berechnet und angezeigt.
+- Der Gesamt-Mittelwert wird in Form von ausgefüllten bzw. teilausgefüllten Sternen gezeigt. Die Gesammtzahl als Zahl in Klammern dahinter.
+- Der Kommentar kann nach dem Absenden bearbeitet oder gelöscht werden, wenn der User eingeloggt ist.
 
 \* würde dem Team an dieser Stelle melden: Mir ist aufgefallen, dass wir weder Moderation noch einen Melde-Button vorsehen.
 Durch den Digital Services Act (DSA) riskiert der Shop Abmahnungen oder Bußgelder, wenn rechtswidrige Kommentare gepostet werden.
 Sollen wir ein Standard-Meldeformular als Acceptance Criteria mit aufnehmen oder das rechtlich prüfen lassen?
+
+### **2. Altersverifikation für alkoholische Produkte**
+Nutzer unter 18 Jahren dürfen Produkte der Kategorien Alkohol nicht kaufen.
+- Hat der User sich eingeloggt und klickt auf den Button "Shop", geht ein Popup auf, das zum eintragen des Geburtsdatums im Format DD-MM-JJJJ auffordert*
+- Klickt ein nicht eingeloggter User auf den Button "Shop" geht ebenfalls das Popup auf.
+- Unsinnige Eingaben, wie etwa ein Datum nach dem aktuellen Datum sollte abgelehnt werden, ebenso wie Daten, die ergeben, das der User über 150 Jahre alt wäre oder die nicht im erlaubten Bereich liegen. (bei Tagen 1-31, bei Monaten 1-12).
+- Bei eine unsinnigen Eingabe wird der User mit einem roten Text unter dem Eingabefeld, um ein gültiges Datum gebeten.
+- Die Geburtstagseingabe wird im Profil gespeichert und ist auch nach dem aus und wieder einloggen gesichert.
+- Die Geburtstagseingabe kann nach dem initialen eingeben nicht mehr geändert werden.
+- ist der User unter 18 Jahre kann er Produkte der Kathegorie Alkohol weder in der Alle Produktlitse noch in der Kathegorie Alkohol sehen
+- Auch ein Direktlink zu einer Detailseite eines Produktes der Kategorie Alkohol sollte nicht angezeigt werden, wenn der User unter 18 ist.
+
+\* würde dem Team an dieser Stelle melden: Das Jugendschutzgesetz (JuSchG) verlangt beim Online-Handel mit Alkohol eine zweistufige Prüfung, um sicherzustellen, dass die Ware weder bestellt noch an Minderjährige übergeben wird.

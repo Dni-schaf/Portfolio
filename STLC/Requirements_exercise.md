@@ -139,3 +139,14 @@ Nutzer unter 18 Jahren dürfen Produkte der Kategorien Alkohol nicht kaufen.
 - Auch ein Direktlink zu einer Detailseite eines Produktes der Kategorie Alkohol sollte nicht angezeigt werden, wenn der User unter 18 ist.
 
 \* würde dem Team an dieser Stelle melden: Das Jugendschutzgesetz (JuSchG) verlangt beim Online-Handel mit Alkohol eine zweistufige Prüfung, um sicherzustellen, dass die Ware weder bestellt noch an Minderjährige übergeben wird.
+
+### **3. Änderungen bei den Versandkosten**
+- 5 Euro sind die Versandkosten normalerweise.
+- Ab >=20 Euro Warenwert(Netto) entfallen die Versandkosten.
+- Werden Produkte aus dem Warenkorb gelöscht und die Produktsumme fällt unter 20 Euro werden die Versandkosten wieder auf 5 Euro erhöht.
+- Die Versandkosten sind weltweit gleich.
+- Versandkosten sind nicht abhängig von Art des Produktes oder dem Gesamtgewicht.
+- Es gibt keine Expresslieferung, Rapatt- oder Gutscheincodes.
+- Die Anzeige im Warenkorb ändert sich in Echtzeit. 
+- Im Warenkorb wird darauf hingewiesen: "ab 20 Euro Warenwert entfallen die Versandkosten."
+- Ab >=20 Euro Warenwert(Netto) gibt es keinen Hinweis mehr. Bei Versandkosten steht 0 Euro.

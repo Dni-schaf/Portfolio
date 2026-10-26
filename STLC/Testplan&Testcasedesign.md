@@ -1,11 +1,11 @@
 # Testplan & Testfallentwurf
 
-## Aufgabe
+### Aufgabe
+
 Erstelle deinen eigenen Testplan für die neuen Funktionen des Webshops!
 
 ---
-
-## **1. Produktanalyse**
+### **1. Produktanalyse**
 
 **Zielsetzung**
 
@@ -13,7 +13,7 @@ Das Hauptziel des Produktes ist die Erweiterung des bestehenden Onlineshops durc
 
 **Zielnutzergruppe**
 
-Das Produkt richtet sich an neue und bestehende Kunden des Online-Shops wobei Nutzer unter 18 Jahre nicht Produkte aller Kategorien kaufen dürfen.
+Das Produkt richtet sich an neue und bestehende Kunden des Online-Shops wobei Nutzer unter 18 Jahre nicht Produkte aller Kategorien sehen oder gar kaufen dürfen.
 
 **Hardware- und Software-Spezifikationen**
 
@@ -37,38 +37,23 @@ Das Produkt richtet sich an neue und bestehende Kunden des Online-Shops wobei Nu
 
 ---
 
-## **2. Teststrategie entwerfen**
+### **2. Teststrategie entwerfen**
 
 **Testumfang (Scope of Testing)**
 
 - **Im Umfang enthalten:**
-    
-    <aside>
-    💡
-    
-    *Welche Funktionalitäten werden getestet?*
-    
-    </aside>
+    - Registrierung & Login
+    - Produkte suchen
+    - Produkt zu Favouriten hinzufügen
+    - Altersbeschränkung für Produkte besonderer Kategorien
+    - Produkte kaufen
+    - Versandkostenkalkulation
+    - Produktbewertung abgeben
     
 - **Nicht im Umfang enthalten:**
-    
-    <aside>
-    💡
-    
-    *Was ist vom Test ausgeschlossen?*
-    
-    </aside>
-    
+    - Backend-Datenbankoperationen ohne UI-Einfluss
 
 **Geplante Testarten**
-
-<aside>
-💡
-
-*Welche Testarten werden für die neuen Funktionen benötigt?*
-
-</aside>
-
 - Funktionstests
 - Regressions-Tests
 - Performanztests
@@ -94,13 +79,13 @@ Das Produkt richtet sich an neue und bestehende Kunden des Online-Shops wobei Nu
 
 - **Testmanager** – Jane Smith
 - **QA Engineer (Funktion & Regression)** – John Doe
-- **QA Engineer (Performance & Sicherheit)** – Alice Johnson
-- **QA Engineer (Usability)** – Robert Brown
-- **Endanwender für UAT (User Acceptance Test)** – Maria Garcia
+- **QA Engineer (Performance & Sicherheit)** – Alice Mustermann
+- **QA Engineer (Usability)** – Alice Mustermann
+- **Endanwender für UAT (User Acceptance Test)** – John Schmidt
 
 ---
 
-## **3. Testziele definieren**
+### **3. Testziele definieren**
 
 **Ziele**
 
@@ -120,7 +105,7 @@ Das Produkt richtet sich an neue und bestehende Kunden des Online-Shops wobei Nu
 
 ---
 
-## **4. Testkriterien definieren**
+### **4. Testkriterien definieren**
 
 **Aussetzungskriterien (Suspension Criteria)**
 
@@ -140,16 +125,16 @@ Das Produkt richtet sich an neue und bestehende Kunden des Online-Shops wobei Nu
 
 ---
 
-## **5. Ressourcenplanung**
+### **5. Ressourcenplanung**
 
 - **Personelle Ressourcen:** QA-Team, Entwicklerteam, Endanwender für UAT
-- **Hardware:** PCs, Laptops, Smartphones, Tablets
-- **Software:** Aktuelle Browser (Chrome, Firefox, Safari, Edge), Betriebssysteme (Windows, macOS, Android, iOS)
+- **Hardware:** Laptops, Smartphones, Tablets
+- **Software:** Aktuelle Browser (Chrome, Safari), Betriebssysteme (Windows, Android, iOS)
 - **Infrastruktur:** Testumgebungen, Automatisierungs-Tools, Performanztest-Werkzeuge
 
 ---
 
-## **6. Testumgebung planen**
+### **6. Testumgebung planen**
 
 - **Testgeräte:** Echte Endgeräte mit real installierten Betriebssystemen und Browsern zur realitätsnahen Simulation
 - **Umgebungen:**
@@ -158,9 +143,9 @@ Das Produkt richtet sich an neue und bestehende Kunden des Online-Shops wobei Nu
     - Abnahme (ACC – Acceptance)
     - Produktion (PROD)
     
-    ---
-    
-    ## **7. Zeitplan und Aufwandsschätzung**
+---
+
+### **7. Zeitplan und Aufwandsschätzung**
     
 
 | Aktivität | Startdatum | Enddatum | Umgebung | Verantwortlich | Geplanter Aufwand |
@@ -178,7 +163,7 @@ Das Produkt richtet sich an neue und bestehende Kunden des Online-Shops wobei Nu
 
 ---
 
-## **8. Testartefakte (Test-Deliverables)**
+### **8. Testartefakte (Test-Deliverables)**
 
 Folgende Dokumente und Werkzeuge werden im Rahmen des Testprozesses erstellt und bereitgestellt:
 

@@ -34,8 +34,11 @@ Heute wende ich dieses analytische Denken in der **Software-Qualitätssicherung*
 ### Highlights & Portfolio-Projekte
 
 #### 1. Requirements Exercise (https://github.com/Dni-schaf/Portfolio/blob/main/STLC/Requirements_exercise.md)
-- **Beschreibung:** An einem fiktiven Onlineshop soll die Testplanung geübt werden. Erster Teil der Aufgabe ist es, aus wagen Anforderungen für 3 neue Feature Fragen abzuleiten und besser Anforderungen zu formulieren mit denen dann in den nächsten Aufgaben weiter gearbetet werden kann. 
+- **Beschreibung:** An einem fiktiven Onlineshop soll die Testplanung geübt werden. Erster Teil der Aufgabe ist es, aus wagen Anforderungen für 3 neue Feature Fragen abzuleiten und besser Anforderungen zu formulieren mit denen dann in den nächsten Aufgaben weiter gearbetet werden kann.
 
+#### 2. Testplan und Testcasedesign (https://github.com/Dni-schaf/Portfolio/blob/main/STLC/Testplan&Testcasedesign.md)
+- **Beschreibung:** Teil 2 des Onlineshop-Projekts. Üben von Testplanung und Testfallentwurf.
+  
 ---
 
 ### Weiterbildung & Zertifikate

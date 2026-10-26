@@ -33,10 +33,13 @@ Heute wende ich dieses analytische Denken in der **Software-Qualitätssicherung*
 
 ### Highlights & Portfolio-Projekte
 
-#### 1. Requirements Exercise (https://github.com/Dni-schaf/Portfolio/blob/main/STLC/Requirements_exercise.md)
+#### 1. Eigenes Übungsprojekt aus Liebe zur Datenvisualisierung (https://github.com/Dni-schaf/chart_library/blob/main/README.md)
+- **Beschreibung** Eine modulare Python Bibliothek zum Rendern von horizontalen und vertikalen ASCII Balkendiagrammen im Terminal. Focus lag auf einer automatisierten pytest CI Pipeline, sodass sie nun um weitere Diagrammarten sicher ergänzt werden kann. 
+
+#### 2. Requirements Exercise (https://github.com/Dni-schaf/Portfolio/blob/main/STLC/Requirements_exercise.md)
 - **Beschreibung:** An einem fiktiven Onlineshop soll die Testplanung geübt werden. Erster Teil der Aufgabe ist es, aus wagen Anforderungen für 3 neue Feature Fragen abzuleiten und besser Anforderungen zu formulieren mit denen dann in den nächsten Aufgaben weiter gearbetet werden kann.
 
-#### 2. Testplan und Testcasedesign (https://github.com/Dni-schaf/Portfolio/blob/main/STLC/Testplan&Testcasedesign.md)
+#### 3. Testplan und Testcasedesign Exercise (https://github.com/Dni-schaf/Portfolio/blob/main/STLC/Testplan&Testcasedesign.md)
 - **Beschreibung:** Teil 2 des Onlineshop-Projekts. Üben von Testplanung und Testfallentwurf.
   
 ---

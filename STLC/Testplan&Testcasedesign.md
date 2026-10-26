@@ -181,10 +181,28 @@ Nutzer unter 18 Jahren dürfen Produkte der Kategorien Alkohol nicht kaufen.
 
 > Nutzen von Black-Box-Testverfahren, da Anforderungen klar und kein Zugriff auf Quellcode:
 Äquivalenzklassen, Grenzwertanalysen, Entscheidungstabellen, Zustandübergangtests
+> Nutzen von Erfahrungsbasierten-Testverfahren, um unvorhergesehene Schwachstellen zu finden:
+Fehlerangriffe, Checklisten, Explorative Testverfahren
+
+---
 
 **Popup-Trigger**
 > - Hat der User sich eingeloggt und klickt auf den Button "Shop", geht ein Popup auf, das zum eintragen des Geburtsdatums im Format DD-MM-JJJJ auffordert.
 > - Klickt ein nicht eingeloggter User auf den Button "Shop" geht ebenfalls das Popup auf.
+
+---
+
+**Testverfahren: Entscheidungstabelle**
+|                                  | Fall 1 | Fall 2 | Fall 3 | Fall 4 | Fall 5 |
+|---|---|---|---|---|---|
+| Ist User eingeloggt              | T      | T      | F      | F      | -      |
+| Ist ist Geburtsdatum gespeichert | T      | F      | F      | T      | -      |
+| Zugriff auf Shop                 | T      | T      | T      | T      | F      |
+| Popup zeigen                     | F      | T      | T      | F      | F      |
+
+Es ergeben sich darauf 5 Testfälle
+
+---
 
 **Altertvalidierung**
 > - Unsinnige Eingaben, wie etwa ein Datum nach dem aktuellen Datum sollte abgelehnt werden, ebenso wie Daten, die ergeben, das der User über 150 Jahre alt wäre oder die nicht im erlaubten Bereich liegen. (bei Tagen 1-31, bei Monaten 1-12).
@@ -192,7 +210,7 @@ Nutzer unter 18 Jahren dürfen Produkte der Kategorien Alkohol nicht kaufen.
 
 ---
 
-Testverfahren: Äquivalenzklassenbildung:
+**Testverfahren: Äquivalenzklassenbildung**
 
 | Typ | Äquivalenzklasse | Altersbereich | Erwartetes Systemverhalten |
 | --- | --- | --- | --- |
@@ -203,7 +221,8 @@ Testverfahren: Äquivalenzklassenbildung:
 | Ungültig (Unsinnig - Wertebereich) | ÄK 5: Falscher Wertebereich für Tag oder Monat | 1 > Tage > 31 und 1 > Monat > 12 | Fehlermeldung |
 | Ungültig (Unsinnig - Eingabetyp) | ÄK 6: Falscher Eingabetyp | Eingabe sind keine Zahlen | Fehlermeldung |
 
-Testverfahren: Grenzwertanalyse (3-Werte, weil Sicherheitsrelevante Funktion, Taggenau):
+
+**Testverfahren: Grenzwertanalyse (3-Werte an Sicherheitsrelevante Grenzen, Taggenau)**
 
 - Grenzfall 18 Jahre (Erfolg): Exakt am 18. Geburtstag (aktuelles Datum - 18 Jahre).
 - Grenzfall 18 Jahre (Alkohol sperre): 1 Tag jünger als 18 (aktuelles Datum + 1 Tag - 18 Jahre).
@@ -214,6 +233,7 @@ Testverfahren: Grenzwertanalyse (3-Werte, weil Sicherheitsrelevante Funktion, Ta
 - Grenzfall Heute (Alkohol sperre): (aktuelles Datum)
 
 So ergeben sich 9 Testfälle (7 um die Grenzwerte abzudecken und 2 für falscher Wertebereich und falscher Eingabetyp)
+
 
 **Beispieltestfall**
 - TESTFALL-ID: TC_SHOP_AGE_001
@@ -236,40 +256,22 @@ So ergeben sich 9 Testfälle (7 um die Grenzwerte abzudecken und 2 für falscher
 
 ---
 
-- TESTFALL-ID: TC_SHOP_AGE_001
-- TITEL: Geburtstagseingabe mit exakt 18 Jahren (Grenzfallprüfung)
-- VORBEDINGUNGEN:
-    - Test-User ist registriert, aber hat noch kein Geburtsdatum hinterlegt.
-    - User ist eingeloggt.
-    - User ist auf der Startseite (Home)
-- TESTSCHRITTE/TESTAKTIONEN:
-    - Klicke auf den Button "Shop" im Hauptmenü
-    - Warte bis das Popup "Age Verification" zur Geburtstagseingabe sich öffnet
-    - Trage das Datum (aktuelles Datum - 18 Jahre) im Format DD-MM-JJJJ ein.
-    - Klicke auf "Confirm"
-- ERWARTETES ERGEBNIS: 
-    - Die Eingabe wird ohne Fehlermeldung akzeptiert und das Fenster schließt sich.
-    - User sieht links in der Kategorie Übersicht in der Kategorie eine Anzahl an Produkten die nicht 0 ist.
-    - User kann auf die Kathegorie klicken und sieht alkoholische Produkte.
-    - Bei Klick auf Button "Add to Card" wird alkoholisches Produkt in den Warenkorb gelegt.
-    - Klick auf Button "Warenkorb"
-    - Alkoholisches Produkt ist im Warenkorb. Kaufvorgang kann abgeschlossen werden.
-- NACHBEDINGUNGEN: 
-    - Im Profil des Users ist dieses Geburtsdatum dauerhaft hinterlegt.
-    - Profil löschen
-- RÜCKVERFOLGBARKEIT: 
-    - Anforderung: "Nutzer unter 18 Jahren dürfen Produkte... nicht kaufen" / Grenzfall 18 Jahre.
- 
-
 **Persistenz & Immutability**
 > - Die Geburtstagseingabe wird im Profil gespeichert und ist auch nach dem aus und wieder einloggen gesichert.
 > - Die Geburtstagseingabe kann nach dem initialen eingeben nicht mehr geändert werden.
+
+**Testverfahren: Fehlerangriff**
+
 
 **Sichtigkeitslogik**
 > - ist der User unter 18 Jahre kann er Produkte der Kathegorie Alkohol weder in der Alle Produktlitse noch in der Kathegorie Alkohol sehen. 
 > - Auch ein Direktlink zu einer Detailseite eines Produktes der Kategorie Alkohol sollte nicht angezeigt werden, wenn der User unter 18 ist.
 
+**Testverfahren: Checklist**
 
+- [ ] In der Shop Produktübersicht sind keine alkoholischen Produkte
+- [ ] Die Kategorie Alkohol zeigt 0 Produkte
+- [ ] Direktlinks zu Produktseiten mit der 
 
 
 

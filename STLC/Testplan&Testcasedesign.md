@@ -13,7 +13,7 @@ Das Hauptziel des Produktes ist die Erweiterung des bestehenden Onlineshops durc
 
 **Zielnutzergruppe**
 
-Das Produkt richtet sich an neue und bestehende Kunden des Online-Shops wobei Nutzer unter 18 Jahre nicht Produkte aller Kategorien sehen oder gar kaufen dürfen.
+Das Produkt richtet sich an neue und bestehende Kunden des Online-Shops wobei Nutzer unter 18 Jahre nicht Produkte aller Kategorien kaufen dürfen.
 
 **Hardware- und Software-Spezifikationen**
 
@@ -173,3 +173,111 @@ Folgende Dokumente und Werkzeuge werden im Rahmen des Testprozesses erstellt und
 - Testberichte
 - Fehlerberichte (Defect Reports)
 - UAT-Freigabedokumentation (Sign-off)
+
+# Testfallentwurf
+
+### **1. Altersverifikation**
+Nutzer unter 18 Jahren dürfen Produkte der Kategorien Alkohol nicht kaufen.
+
+> Nutzen von Black-Box-Testverfahren, da Anforderungen klar und kein Zugriff auf Quellcode:
+Äquivalenzklassen, Grenzwertanalysen, Entscheidungstabellen, Zustandübergangtests
+
+**Popup-Trigger**
+> - Hat der User sich eingeloggt und klickt auf den Button "Shop", geht ein Popup auf, das zum eintragen des Geburtsdatums im Format DD-MM-JJJJ auffordert.
+> - Klickt ein nicht eingeloggter User auf den Button "Shop" geht ebenfalls das Popup auf.
+
+**Altertvalidierung**
+> - Unsinnige Eingaben, wie etwa ein Datum nach dem aktuellen Datum sollte abgelehnt werden, ebenso wie Daten, die ergeben, das der User über 150 Jahre alt wäre oder die nicht im erlaubten Bereich liegen. (bei Tagen 1-31, bei Monaten 1-12).
+> - Bei eine unsinnigen Eingabe wird der User mit einem roten Text unter dem Eingabefeld, um ein gültiges Datum gebeten.
+
+---
+
+Testverfahren: Äquivalenzklassenbildung:
+
+| Typ | Äquivalenzklasse | Altersbereich | Erwartetes Systemverhalten |
+| --- | --- | --- | --- |
+| Gültig | ÄK 1: Volljährig | 18 bis 150 Jahre | Datum akzeptiert, Alkohol sichtbar & kaufbar |
+| Ungültig (Fachlich) | ÄK 2: Minderjährig | 0 bis < 18 Jahre (17 Jahre, 364 Tage) | Datum akzeptiert, Alkohol nicht sichtbar/kaufbar|
+| Ungültig (Unsinnig - zu alt) | ÄK 3: Zu alt | > 150 Jahre | Fehlermeldung |
+| Ungültig (Unsinnig - Zukunft) | ÄK 4: In der Zukunft	| < 0 Jahre (Geburtsdatum > heute)	| Fehlermeldung |
+| Ungültig (Unsinnig - Wertebereich) | ÄK 5: Falscher Wertebereich für Tag oder Monat | 1 > Tage > 31 und 1 > Monat > 12 | Fehlermeldung |
+| Ungültig (Unsinnig - Eingabetyp) | ÄK 6: Falscher Eingabetyp | Eingabe sind keine Zahlen | Fehlermeldung |
+
+Testverfahren: Grenzwertanalyse (3-Werte, weil Sicherheitsrelevante Funktion, Taggenau):
+
+- Grenzfall 18 Jahre (Erfolg): Exakt am 18. Geburtstag (aktuelles Datum - 18 Jahre).
+- Grenzfall 18 Jahre (Alkohol sperre): 1 Tag jünger als 18 (aktuelles Datum + 1 Tag - 18 Jahre).
+- Grenzfall 18 Jahre (Erfolg): 1 Tag älter als 18 (aktuelles Datum - 1 Tag - 18 Jahre).
+- Grenzfall Höchstalter (Erfolg): 150 Jahre alt (aktuelles Datum - 150 Jahre).
+- Grenzfall Höchstalter (Fehlermeldung): 151 Jahre alt (aktuelles Datum - 151 Jahre).
+- Grenzfall Zukunft (Fehlermeldung): (aktuelles Datum + 1 Tag)
+- Grenzfall Heute (Alkohol sperre): (aktuelles Datum)
+
+So ergeben sich 9 Testfälle (7 um die Grenzwerte abzudecken und 2 für falscher Wertebereich und falscher Eingabetyp)
+
+**Beispieltestfall**
+- TESTFALL-ID: TC_SHOP_AGE_001
+- TITEL: Geburtstagseingabe mit exakt 18 Jahren (Grenzfallprüfung)
+- VORBEDINGUNGEN:
+    - Test-User ist registriert, aber hat noch kein Geburtsdatum hinterlegt.
+    - User ist eingeloggt.
+    - User ist auf der Startseite (Home)
+- TESTSCHRITTE/TESTAKTIONEN:
+    - Klicke auf den Button "Shop" im Hauptmenü
+    - Warte bis das Popup "Age Verification" zur Geburtstagseingabe sich öffnet
+    - Trage das Datum (aktuelles Datum - 18 Jahre) im Format DD-MM-JJJJ ein.
+    - Klicke auf "Confirm"
+- ERWARTETES ERGEBNIS: 
+    - Die Eingabe wird ohne Fehlermeldung akzeptiert und das Fenster schließt sich.
+- NACHBEDINGUNGEN: 
+    - Profil löschen
+- RÜCKVERFOLGBARKEIT: 
+    - Anforderung: "Nutzer unter 18 Jahren dürfen Produkte... nicht kaufen" / Grenzfall 18 Jahre.
+
+---
+
+- TESTFALL-ID: TC_SHOP_AGE_001
+- TITEL: Geburtstagseingabe mit exakt 18 Jahren (Grenzfallprüfung)
+- VORBEDINGUNGEN:
+    - Test-User ist registriert, aber hat noch kein Geburtsdatum hinterlegt.
+    - User ist eingeloggt.
+    - User ist auf der Startseite (Home)
+- TESTSCHRITTE/TESTAKTIONEN:
+    - Klicke auf den Button "Shop" im Hauptmenü
+    - Warte bis das Popup "Age Verification" zur Geburtstagseingabe sich öffnet
+    - Trage das Datum (aktuelles Datum - 18 Jahre) im Format DD-MM-JJJJ ein.
+    - Klicke auf "Confirm"
+- ERWARTETES ERGEBNIS: 
+    - Die Eingabe wird ohne Fehlermeldung akzeptiert und das Fenster schließt sich.
+    - User sieht links in der Kategorie Übersicht in der Kategorie eine Anzahl an Produkten die nicht 0 ist.
+    - User kann auf die Kathegorie klicken und sieht alkoholische Produkte.
+    - Bei Klick auf Button "Add to Card" wird alkoholisches Produkt in den Warenkorb gelegt.
+    - Klick auf Button "Warenkorb"
+    - Alkoholisches Produkt ist im Warenkorb. Kaufvorgang kann abgeschlossen werden.
+- NACHBEDINGUNGEN: 
+    - Im Profil des Users ist dieses Geburtsdatum dauerhaft hinterlegt.
+    - Profil löschen
+- RÜCKVERFOLGBARKEIT: 
+    - Anforderung: "Nutzer unter 18 Jahren dürfen Produkte... nicht kaufen" / Grenzfall 18 Jahre.
+ 
+
+**Persistenz & Immutability**
+> - Die Geburtstagseingabe wird im Profil gespeichert und ist auch nach dem aus und wieder einloggen gesichert.
+> - Die Geburtstagseingabe kann nach dem initialen eingeben nicht mehr geändert werden.
+
+**Sichtigkeitslogik**
+> - ist der User unter 18 Jahre kann er Produkte der Kathegorie Alkohol weder in der Alle Produktlitse noch in der Kathegorie Alkohol sehen. 
+> - Auch ein Direktlink zu einer Detailseite eines Produktes der Kategorie Alkohol sollte nicht angezeigt werden, wenn der User unter 18 ist.
+
+
+
+
+
+1. TESTFALL-ID: 
+2. Ein aussagekräftiger TITEL 
+3. VORBEDINGUNGEN (Pre-conditions):
+Was muss im System bereits gegeben sein, bevor du diesen Testfall überhaupt starten darfst? 
+4. TESTSCHRITTE/TESTAKTIONEN (Test Actions & Inputs):   Die exakte, schrittweise Handlungsanweisung – inklusive konkreter Eingabewerte.   
+5. ERWARTETES ERGEBNIS (Expected Results):Der präzise Soll-Zustand des Systems nach der Durchführung. Was muss passieren, damit der Test als bestanden gilt? 
+6. NACHBEDINGUNGEN (Post-conditions): Wie sieht der Zustand des Systems nach dem Test aus? Muss etwas zurückgesetzt (Teardown) werden?
+7. RÜCKVERFOLGBARKEIT (Traceability): Oft wird im Testfall auch hinterlegt, auf welche Testbedingung oder welche Anforderung (Testbasis / User Story) sich dieser Testfall bezieht.

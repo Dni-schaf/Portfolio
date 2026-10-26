@@ -179,9 +179,9 @@ Folgende Dokumente und Werkzeuge werden im Rahmen des Testprozesses erstellt und
 ### **1. Altersverifikation**
 Nutzer unter 18 Jahren dürfen Produkte der Kategorien Alkohol nicht kaufen.
 
-> Nutzen von Black-Box-Testverfahren, da Anforderungen klar und kein Zugriff auf Quellcode:
+> - Nutzen von Black-Box-Testverfahren, da Anforderungen klar und kein Zugriff auf Quellcode:
 Äquivalenzklassen, Grenzwertanalysen, Entscheidungstabellen, Zustandübergangtests
-> Nutzen von Erfahrungsbasierten-Testverfahren, um unvorhergesehene Schwachstellen zu finden:
+> - Nutzen von Erfahrungsbasierten-Testverfahren, um unvorhergesehene Schwachstellen zu finden:
 Fehlerangriffe, Checklisten, Explorative Testverfahren
 
 ---
@@ -262,24 +262,25 @@ So ergeben sich 9 Testfälle (7 um die Grenzwerte abzudecken und 2 für falscher
 
 **Testverfahren: Fehlerangriff**
 
+- Versuchen das Geburtsdatums-Popup erneut zu Triggern und so die Geburtstagseingabe zu verändern
+    - Aus- und wieder einloggen 
+    - Seite neulade
+    - Cookys löschen
+    - Anderer Browser
+    - Inkognito-Fenster
+    - Anderes Gerät 
+
+---
 
 **Sichtigkeitslogik**
-> - ist der User unter 18 Jahre kann er Produkte der Kathegorie Alkohol weder in der Alle Produktlitse noch in der Kathegorie Alkohol sehen. 
+> - ist der User unter 18 Jahre kann er Produkte der Kathegorie Alkohol weder in der alle Produktlitse noch in der Kathegorie Alkohol sehen. 
 > - Auch ein Direktlink zu einer Detailseite eines Produktes der Kategorie Alkohol sollte nicht angezeigt werden, wenn der User unter 18 ist.
 
 **Testverfahren: Checklist**
 
+Bei einem Useraccount mit eine Alterseingabe unter 18 Jahren.
+Checkliste:
 - [ ] In der Shop Produktübersicht sind keine alkoholischen Produkte
 - [ ] Die Kategorie Alkohol zeigt 0 Produkte
-- [ ] Direktlinks zu Produktseiten mit der 
+- [ ] Direktlinks zu Produktseiten mit der alkoholischen Produkten zeigen "Produkt nicht Verfügbar"-Seite an
 
-
-
-1. TESTFALL-ID: 
-2. Ein aussagekräftiger TITEL 
-3. VORBEDINGUNGEN (Pre-conditions):
-Was muss im System bereits gegeben sein, bevor du diesen Testfall überhaupt starten darfst? 
-4. TESTSCHRITTE/TESTAKTIONEN (Test Actions & Inputs):   Die exakte, schrittweise Handlungsanweisung – inklusive konkreter Eingabewerte.   
-5. ERWARTETES ERGEBNIS (Expected Results):Der präzise Soll-Zustand des Systems nach der Durchführung. Was muss passieren, damit der Test als bestanden gilt? 
-6. NACHBEDINGUNGEN (Post-conditions): Wie sieht der Zustand des Systems nach dem Test aus? Muss etwas zurückgesetzt (Teardown) werden?
-7. RÜCKVERFOLGBARKEIT (Traceability): Oft wird im Testfall auch hinterlegt, auf welche Testbedingung oder welche Anforderung (Testbasis / User Story) sich dieser Testfall bezieht.

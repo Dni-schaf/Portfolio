@@ -193,19 +193,19 @@ Fehlerangriffe, Checklisten, Explorative Testverfahren
 ---
 
 **Testverfahren: Entscheidungstabelle**
-|                                  | Fall 1 | Fall 2 | Fall 3 | Fall 4 | Fall 5 |
+|                                    | Fall 1 | Fall 2 | Fall 3 | Fall 4 | Fall 5 |
 |---|---|---|---|---|---|
-| Ist User eingeloggt              | T      | T      | F      | F      | -      |
-| Ist ist Geburtsdatum gespeichert | T      | F      | F      | T      | -      |
-| Zugriff auf Shop                 | T      | T      | T      | T      | F      |
-| Popup zeigen                     | F      | T      | T      | F      | F      |
+| Ist User eingeloggt?               | T      | T      | F      | F      | -      |
+| Ist das Geburtsdatum gespeichert?  | T      | F      | F      | T      | -      |
+| versucht User auf Shop zuzugreifen?| T      | T      | T      | T      | F      |
+| Dann: Popup zeigen?                | F      | T      | T      | F      | F      |
 
 Es ergeben sich darauf 5 Testfälle
 
 ---
 
 **Altertvalidierung**
-> - Unsinnige Eingaben, wie etwa ein Datum nach dem aktuellen Datum sollte abgelehnt werden, ebenso wie Daten, die ergeben, das der User über 150 Jahre alt wäre oder die nicht im erlaubten Bereich liegen. (bei Tagen 1-31, bei Monaten 1-12).
+> - Unsinnige Eingaben, wie etwa ein Datum nach dem aktuellen Datum sollte abgelehnt werden, ebenso wie Daten, die ergeben, das der User über 150 Jahre alt wäre oder die nicht im erlaubten Bereich liegen. (bei Tagen 1-31 (einschließlich), bei Monaten 1-12 (einschließlich)).
 > - Bei eine unsinnigen Eingabe wird der User mit einem roten Text unter dem Eingabefeld, um ein gültiges Datum gebeten.
 
 ---
@@ -218,7 +218,7 @@ Es ergeben sich darauf 5 Testfälle
 | Ungültig (Fachlich) | ÄK 2: Minderjährig | 0 bis < 18 Jahre (17 Jahre, 364 Tage) | Datum akzeptiert, Alkohol nicht sichtbar/kaufbar|
 | Ungültig (Unsinnig - zu alt) | ÄK 3: Zu alt | > 150 Jahre | Fehlermeldung |
 | Ungültig (Unsinnig - Zukunft) | ÄK 4: In der Zukunft	| < 0 Jahre (Geburtsdatum > heute)	| Fehlermeldung |
-| Ungültig (Unsinnig - Wertebereich) | ÄK 5: Falscher Wertebereich für Tag oder Monat | 1 > Tage > 31 und 1 > Monat > 12 | Fehlermeldung |
+| Ungültig (Unsinnig - Wertebereich) | ÄK 5: Falscher Wertebereich für Tag oder Monat | 1 >= Tage >= 31 und 1 >= Monat >= 12 | Fehlermeldung |
 | Ungültig (Unsinnig - Eingabetyp) | ÄK 6: Falscher Eingabetyp | Eingabe sind keine Zahlen | Fehlermeldung |
 
 

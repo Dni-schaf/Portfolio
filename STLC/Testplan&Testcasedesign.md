@@ -295,12 +295,9 @@ Fehlerangriffe, Checklisten, Explorative Testverfahren
 >- Die Bewertung ist möglich, wenn der User eingeloggt ist und das Produkt zuvor auch gekauft hat.
 >- Es ist nur eine Rezension pro Artikel pro User möglich. 
 
----
-
 **Testverfahren: Entscheidungstabelle**
-
 |                                              | Fall 1 | Fall 2 | Fall 3 | Fall 4 | 
-|---|---|---|---|---|---|
+|---|---|---|---|---|
 | Ist User eingeloggt?                         | T      | T      | T      | F      | 
 | Hat User Produkt gekauft?                    | T      | T      | F      | -      | 
 | Hat User noch keine Rezension abgeben?       | T      | F      | -      | -      | 
@@ -314,7 +311,6 @@ Es ergeben sich daraus 4 Testfälle
 >- Die Vergabe von mindestens 1 bis maximal 5 Sterne ist möglich
 
 **Testverfahren: Grenzwertanalyse (2 Werte)**
-
 - Grenzfall 0 Sterne (Fehlerhafte Eingabe): Absenden Button ausgegraut / nicht klickbar.
 - Grenzfall 1 Stern (Valide Eingabe):  Absenden Button klickbar.
 - Grenzfall 5 Stern (Valide Eingabe):  Absenden Button klickbar.
@@ -328,11 +324,15 @@ Es ergeben sich daraus 4 Testfälle
 >- Vor dem Absenden kann die Eingabe und die Sternen-Vergabe sooft geändert werden wie der User möchte.
 >- Für ein Rezension ist es Pflicht mindestens 1 Stern zu vergeben. Ist kein Stern vergeben kann die Eingabe nicht abgesendet werden.
 
-**Testverfahren: Zustandübergangtests**
+**Testverfahren: Zustandübergangtabelle**
+| Aktueller Zustand | Ereignis | Neuer Zustand |
+| --- | --- | --- |
+| 1. Initial / Leer (0 Sterne) | Klick auf Stern (1 bis 5) | 2. Stern(e) vergeben |
+| 1. Initial / Leer (0 Sterne) | Klick auf "Absenden" | Keine Aktion / Button ist inaktiv / Klick wird ignoriert.|
+| 2. 1 <= X <=5 Sterne sind vergeben (z.B. 2 Sterne) | Klick auf einen anderen Stern (z.B. 5 Sterne) | 2. 1 <= X <=5 Sterne sind vergeben (z.B. 5 Sterne)|
+| 2. 1 <= X <=5 Sterne sind vergeben | Klick auf "Absenden" | 3. Bewertung abgesendet / Weiterleitung zu Produktseite mit neuer Bewertung |
 
-####bild fehlt noch########
-
-Es ergeben sich daraus x Testfälle
+Es ergeben sich daraus 4 Testfälle
 
 ---
 
@@ -346,15 +346,11 @@ Es ergeben sich daraus x Testfälle
 - Grenzfall 501 Zeichen (inkorrekte Eingabe):  Absenden Button nicht klickbar/ausgegraut und Warnung erscheint "Zeichenanzahl überschritten"
 
 **Testverfahren: Äquivalenzklassen**
-ÄK 1 (Gültig): Zeichen aus dem deutschen/europäischen Raum (z. B. Umlaute ä, ö, ü, ß, französische Akzente é, à, skandinavische Zeichen ø, å).
-
-ÄK 2 (Ungültig / Sicherheit): SQL-Injection-Versuche oder Skripte (<script>alert(1)</script>), um zu prüfen, ob das Eingabefeld ordnungsgemäß escaped wird (XSS-Schutz).
-
 | Typ | Äquivalenzklasse | Eingabe | Erwartetes Verhalten |
 | --- | --- | --- | --- |
 | Gültig | ÄK 1: Zeichen aus dem deutschen/europäischen Raum | z. B. Umlaute ä, ö, ü, ß, französische Akzente é, à, skandinavische Zeichen ø, å | Eingabe akzeptiert |
 | Ungültig | ÄK 2: Zeichen aus asiatischen Sprachraum |  汉字 / 漢字 | Eingabe akzeptiert, Darstellungsprobleme toleriert |
-| Sicherheitsrisiko | ÄK 3: Skripte | (<script>alert(1)</script>) | Absende der Rezension verweigern |
+| Sicherheitsrisiko | ÄK 3: Skripte | (<script>alert(1)</script>) | Absenden der Rezension verweigern |
 
 Es ergeben sich daraus 6 Testfälle
 
@@ -366,7 +362,7 @@ Es ergeben sich daraus 6 Testfälle
 **Testverfahren: Entscheidungstabelle**
 
 |                                         | Fall 1 | Fall 2 | Fall 3 |
-|---|---|---|---|---|---|
+|---|---|---|---|
 | Ist User eingeloggt?                    | T      | T      | F      | 
 | Dieser Kommenatar von dem User erstellt?| T      | F      | -      | 
 | Dann: Kommentar bearbeitbar?            | T      | F      | F      | 
@@ -385,5 +381,31 @@ Es ergeben sich daraus 3 Testfälle
 Ein eingeloggter User hat ein zuvor gekauftes Produkt erfolgreich bewertet.
 Es wird die Produktseite betrachtet.
 Checkliste:
-- [ ] Die Durchschnittszahl der Sterne hat sich um die neu vergebenen Sterne aktualisiert 
-- [ ] Die neue Bewertung erscheint an erster Stelle in der Rezensionsliste unter dem Produkt
+- [ ] Die Bewertung wird ohne Fehlermeldung abgesendet und der Dialog schließt sich.
+- [ ] Die Gesamtanzahl der abgegebenen Stimmen in Klammern erhöht sich um +1 (von 21 auf 22).
+- [ ] Der Gesamt-Mittelwert der Sterne wird basierend auf der neuen Note (1 Stern) neu berechnet und angepasst.
+- [ ] Die neue Bewertung erscheint direkt an erster Stelle in der Rezensionsliste unter dem Produkt.
+
+**Beispieltestfall**
+- TESTFALL-ID: TC_SHOP_REVIEW_001
+- TITEL: Productrezension erfolgreich abgeben
+- VORBEDINGUNGEN:
+    - Test-User ist registriert.
+    - User ist eingeloggt.
+    - User hat Produkt gekauft (https://grocerymate.masterschool.com/product/66b3a57b3fd5048eacb479a6)
+- TESTSCHRITTE/TESTAKTIONEN:
+    - User klickt auf der Produktdetail Seite auf den Button "Tell us your opinion"
+    - Vergibt 1 Stern
+    - User klickt auf "Send"-Button
+- ERWARTETES ERGEBNIS:  
+    - [ ] Die Bewertung wird ohne Fehlermeldung abgesendet und der Dialog schließt sich.
+    - [ ] Die Gesamtanzahl der abgegebenen Stimmen in Klammern erhöht sich um +1 (von 21 auf 22).
+    - [ ] Der Gesamt-Mittelwert der Sterne wird basierend auf der neuen Note (1 Stern) neu berechnet und angepasst.
+    - [ ] Die neue Bewertung erscheint direkt an erster Stelle in der Rezensionsliste unter dem Produkt.
+- NACHBEDINGUNGEN: 
+    - Rezension über das Admin-Panel zurücksetzen
+- RÜCKVERFOLGBARKEIT: 
+    - Anforderung: "Ein eingeloggter User hat ein zuvor gekauftes Produkt erfolgreich bewertet."
+
+---
+---

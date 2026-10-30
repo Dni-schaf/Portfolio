@@ -190,8 +190,6 @@ Fehlerangriffe, Checklisten, Explorative Testverfahren
 > - Hat der User sich eingeloggt und klickt auf den Button "Shop", geht ein Popup auf, das zum eintragen des Geburtsdatums im Format DD-MM-JJJJ auffordert.
 > - Klickt ein nicht eingeloggter User auf den Button "Shop" geht ebenfalls das Popup auf.
 
----
-
 **Testverfahren: Entscheidungstabelle**
 |                                    | Fall 1 | Fall 2 | Fall 3 | Fall 4 | Fall 5 |
 |---|---|---|---|---|---|
@@ -200,7 +198,7 @@ Fehlerangriffe, Checklisten, Explorative Testverfahren
 | versucht User auf Shop zuzugreifen?| T      | T      | T      | T      | F      |
 | Dann: Popup zeigen?                | F      | T      | T      | F      | F      |
 
-Es ergeben sich darauf 5 Testfälle
+Es ergeben sich daraus 5 Testfälle
 
 ---
 
@@ -208,17 +206,14 @@ Es ergeben sich darauf 5 Testfälle
 > - Unsinnige Eingaben, wie etwa ein Datum nach dem aktuellen Datum sollte abgelehnt werden, ebenso wie Daten, die ergeben, das der User über 150 Jahre alt wäre oder die nicht im erlaubten Bereich liegen. (bei Tagen 1-31 (einschließlich), bei Monaten 1-12 (einschließlich)).
 > - Bei eine unsinnigen Eingabe wird der User mit einem roten Text unter dem Eingabefeld, um ein gültiges Datum gebeten.
 
----
-
 **Testverfahren: Äquivalenzklassenbildung**
-
 | Typ | Äquivalenzklasse | Altersbereich | Erwartetes Systemverhalten |
 | --- | --- | --- | --- |
 | Gültig | ÄK 1: Volljährig | 18 bis 150 Jahre | Datum akzeptiert, Alkohol sichtbar & kaufbar |
 | Ungültig (Fachlich) | ÄK 2: Minderjährig | 0 bis < 18 Jahre (17 Jahre, 364 Tage) | Datum akzeptiert, Alkohol nicht sichtbar/kaufbar|
 | Ungültig (Unsinnig - zu alt) | ÄK 3: Zu alt | > 150 Jahre | Fehlermeldung |
 | Ungültig (Unsinnig - Zukunft) | ÄK 4: In der Zukunft	| < 0 Jahre (Geburtsdatum > heute)	| Fehlermeldung |
-| Ungültig (Unsinnig - Wertebereich) | ÄK 5: Falscher Wertebereich für Tag oder Monat | 1 >= Tage >= 31 und 1 >= Monat >= 12 | Fehlermeldung |
+| Ungültig (Unsinnig - Wertebereich) | ÄK 5: Falscher Wertebereich für Tag oder Monat | 1 <= Tage <= 31 und 1 <= Monat <= 12 | Fehlermeldung |
 | Ungültig (Unsinnig - Eingabetyp) | ÄK 6: Falscher Eingabetyp | Eingabe sind keine Zahlen | Fehlermeldung |
 
 
@@ -277,10 +272,118 @@ So ergeben sich 9 Testfälle (7 um die Grenzwerte abzudecken und 2 für falscher
 > - Auch ein Direktlink zu einer Detailseite eines Produktes der Kategorie Alkohol sollte nicht angezeigt werden, wenn der User unter 18 ist.
 
 **Testverfahren: Checklist**
-
 Bei einem Useraccount mit eine Alterseingabe unter 18 Jahren.
 Checkliste:
 - [ ] In der Shop Produktübersicht sind keine alkoholischen Produkte
 - [ ] Die Kategorie Alkohol zeigt 0 Produkte
 - [ ] Direktlinks zu Produktseiten mit der alkoholischen Produkten zeigen "Produkt nicht Verfügbar"-Seite an
 
+---
+---
+
+### **2. Bewertungssystem**
+Nutzer sollen Produkte mit einem 5-Sterne-System bewerten können. Es ist möglich zusätzlich schriftliches Feedback abzugeben.
+
+> - Nutzen von Black-Box-Testverfahren, da Anforderungen klar und kein Zugriff auf Quellcode:
+Äquivalenzklassen, Grenzwertanalysen, Entscheidungstabellen, Zustandübergangtests
+> - Nutzen von Erfahrungsbasierten-Testverfahren, um unvorhergesehene Schwachstellen zu finden:
+Fehlerangriffe, Checklisten, Explorative Testverfahren
+
+---
+
+**Vorraussetzung für Bewertung** 
+>- Die Bewertung ist möglich, wenn der User eingeloggt ist und das Produkt zuvor auch gekauft hat.
+>- Es ist nur eine Rezension pro Artikel pro User möglich. 
+
+---
+
+**Testverfahren: Entscheidungstabelle**
+
+|                                              | Fall 1 | Fall 2 | Fall 3 | Fall 4 | 
+|---|---|---|---|---|---|
+| Ist User eingeloggt?                         | T      | T      | T      | F      | 
+| Hat User Produkt gekauft?                    | T      | T      | F      | -      | 
+| Hat User noch keine Rezension abgeben?       | T      | F      | -      | -      | 
+| Dann: Klick auf Rezension schreiben möglich? | T      | F      | F      | F      | 
+
+Es ergeben sich daraus 4 Testfälle
+
+---
+
+**Sterne-Anzahl**
+>- Die Vergabe von mindestens 1 bis maximal 5 Sterne ist möglich
+
+**Testverfahren: Grenzwertanalyse (2 Werte)**
+
+- Grenzfall 0 Sterne (Fehlerhafte Eingabe): Absenden Button ausgegraut / nicht klickbar.
+- Grenzfall 1 Stern (Valide Eingabe):  Absenden Button klickbar.
+- Grenzfall 5 Stern (Valide Eingabe):  Absenden Button klickbar.
+- Grenzfall 6 Stern (unmögliche Eingabe):  sollte nicht möglich sein, da es keine freie Eingabe ist, sondern nur anklickbare Sterne.
+
+Es ergeben sich daraus 4 Testfälle
+
+---
+
+**Sterne-Bewertungsvorgang**
+>- Vor dem Absenden kann die Eingabe und die Sternen-Vergabe sooft geändert werden wie der User möchte.
+>- Für ein Rezension ist es Pflicht mindestens 1 Stern zu vergeben. Ist kein Stern vergeben kann die Eingabe nicht abgesendet werden.
+
+**Testverfahren: Zustandübergangtests**
+
+####bild fehlt noch########
+
+Es ergeben sich daraus x Testfälle
+
+---
+
+**Freitext-Eingabe**
+>- Der Freitext darf maximal 500 Zeichen habene, eine untere Grenze gibt es nicht. 
+>- Es werden neben dem lateinischen Alphabet auch zusätzliche Zeichen aus europäischen Sprachen unterstützt. Eine genaue List muss erstellt werden.
+
+**Testverfahren: Grenzwertanalyse (2 Werte)**
+- Grenzfall 0 Zeichen (Valide Eingabe, da optional): Absenden Button klickbar.
+- Grenzfall 500 Zeichen (Valide Eingabe):  Absenden Button klickbar.
+- Grenzfall 501 Zeichen (inkorrekte Eingabe):  Absenden Button nicht klickbar/ausgegraut und Warnung erscheint "Zeichenanzahl überschritten"
+
+**Testverfahren: Äquivalenzklassen**
+ÄK 1 (Gültig): Zeichen aus dem deutschen/europäischen Raum (z. B. Umlaute ä, ö, ü, ß, französische Akzente é, à, skandinavische Zeichen ø, å).
+
+ÄK 2 (Ungültig / Sicherheit): SQL-Injection-Versuche oder Skripte (<script>alert(1)</script>), um zu prüfen, ob das Eingabefeld ordnungsgemäß escaped wird (XSS-Schutz).
+
+| Typ | Äquivalenzklasse | Eingabe | Erwartetes Verhalten |
+| --- | --- | --- | --- |
+| Gültig | ÄK 1: Zeichen aus dem deutschen/europäischen Raum | z. B. Umlaute ä, ö, ü, ß, französische Akzente é, à, skandinavische Zeichen ø, å | Eingabe akzeptiert |
+| Ungültig | ÄK 2: Zeichen aus asiatischen Sprachraum |  汉字 / 漢字 | Eingabe akzeptiert, Darstellungsprobleme toleriert |
+| Sicherheitsrisiko | ÄK 3: Skripte | (<script>alert(1)</script>) | Absende der Rezension verweigern |
+
+Es ergeben sich daraus 6 Testfälle
+
+---
+
+**Nachträgliche Bearbeitung**
+>- Der Kommentar kann nach dem Absenden bearbeitet oder gelöscht werden, wenn der User eingeloggt ist.
+
+**Testverfahren: Entscheidungstabelle**
+
+|                                         | Fall 1 | Fall 2 | Fall 3 |
+|---|---|---|---|---|---|
+| Ist User eingeloggt?                    | T      | T      | F      | 
+| Dieser Kommenatar von dem User erstellt?| T      | F      | -      | 
+| Dann: Kommentar bearbeitbar?            | T      | F      | F      | 
+| Dann: Kommentar löschbar?               | T      | F      | F      | 
+
+Es ergeben sich daraus 3 Testfälle
+
+---
+
+**Darstellung der Bewertungen** 
+- Der Gesamt-Mittelwert der Sterne sowie die Gesamtzahl der Stimmen werden auf der Produktseite dynamisch neu berechnet und angezeigt.
+- Der Gesamt-Mittelwert wird in Form von ausgefüllten bzw. teilausgefüllten Sternen gezeigt. Die Gesammtzahl als Zahl in Klammern dahinter.
+- Nach erfolgreichem Absenden erscheint die Bewertung direkt auf der Detailseite des jeweiligen Produkts.
+
+**Testverfahren: Checkliste**
+Ein eingeloggter User hat ein zuvor gekauftes Produkt erfolgreich bewertet.
+Es wird die Produktseite betrachtet.
+Checkliste:
+- [ ] Die Durchschnittszahl der Sterne hat sich um die neu vergebenen Sterne aktualisiert 
+- [ ] Die neue Bewertung erscheint an erster Stelle in der Rezensionsliste unter dem Produkt

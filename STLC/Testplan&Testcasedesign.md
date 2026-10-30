@@ -373,9 +373,9 @@ Es ergeben sich daraus 3 Testfälle
 ---
 
 **Darstellung der Bewertungen** 
-- Der Gesamt-Mittelwert der Sterne sowie die Gesamtzahl der Stimmen werden auf der Produktseite dynamisch neu berechnet und angezeigt.
-- Der Gesamt-Mittelwert wird in Form von ausgefüllten bzw. teilausgefüllten Sternen gezeigt. Die Gesammtzahl als Zahl in Klammern dahinter.
-- Nach erfolgreichem Absenden erscheint die Bewertung direkt auf der Detailseite des jeweiligen Produkts.
+>- Der Gesamt-Mittelwert der Sterne sowie die Gesamtzahl der Stimmen werden auf der Produktseite dynamisch neu berechnet und angezeigt.
+>- Der Gesamt-Mittelwert wird in Form von ausgefüllten bzw. teilausgefüllten Sternen gezeigt. Die Gesammtzahl als Zahl in Klammern dahinter.
+>- Nach erfolgreichem Absenden erscheint die Bewertung direkt auf der Detailseite des jeweiligen Produkts.
 
 **Testverfahren: Checkliste**
 Ein eingeloggter User hat ein zuvor gekauftes Produkt erfolgreich bewertet.
@@ -409,3 +409,60 @@ Checkliste:
 
 ---
 ---
+
+### **3. Versandkostenkalkulation**
+Ab >=20 Euro Warenwert(Netto) entfallen die normalerweise 5 Euro Versandkosten.
+
+> - Nutzen von Black-Box-Testverfahren, da Anforderungen klar und kein Zugriff auf Quellcode:
+Äquivalenzklassen, Grenzwertanalysen, Entscheidungstabellen, Zustandübergangtests
+> - Nutzen von Erfahrungsbasierten-Testverfahren, um unvorhergesehene Schwachstellen zu finden:
+Fehlerangriffe, Checklisten, Explorative Testverfahren
+
+---
+
+**Versandkostenkalkulation**
+>- Ab einem Nettowarenwert von 20 Euro oder mehr entfallen die Versandkosten
+
+**Testverfahren: Grenzwertanalyse (3 Werte, weil besonders wichtig, auf Cent genau)**
+- Grenzfall 19,99 €: Versandkosten 5 Euro.
+- Grenzfall 20,- €:  Versand kostenlos.
+- Grenzfall 20,01 €:  Versand kostenlos.
+
+Ergibt 3 Testfälle
+
+---
+
+**Echtzeitkalkulation der Versandkosten**
+>- Werden Produkte aus dem Warenkorb gelöscht und die Produktsumme fällt unter 20 Euro werden die Versandkosten wieder auf 5 Euro erhöht.
+>- Die Anzeige im Warenkorb ändert sich in Echtzeit.
+>- Im Warenkorb wird darauf hingewiesen: "ab 20 Euro Warenwert entfallen die Versandkosten."
+>- Ab >=20 Euro Warenwert(Netto) gibt es keinen Hinweis mehr. Bei Versandkosten steht 0 Euro.
+
+**Testverfahren: Zustandsübergangstabelle**
+| Aktueller Zustand | Aktion | Neuer Zustand | Erwartetes Systemverhalten (Echtzeit)|
+|---|---|---|---|
+| Initial (Leer) | Artikel für 15,00 € hinzufügen | Warenkorbwert < 20 € | Versand: 5,00 €, Hinweis ist sichtbar.|
+| Warenkorbwert 15,00 € | Artikel für 10,00 € hinzufügen | Warenkorbwert 25,00 € | Versandkosten springen sofort auf 0,00 €, Hinweis verschwindet.|
+| Warenkorbwert 25,00 € | Artikel aus Warenkorb löschen | Neuer Warenkorbwert 18,00 € | Versand springt sofort zurück auf 5,00 €, Hinweis erscheint wieder.|
+| Warenkorbwert 25,00 € | Alle Artikel aus Warenkorb löschen | Initial (Leer) |  Versand springt sofort zurück auf 5,00 €, Hinweis erscheint wieder.|
+
+**Beispieltestfall**
+- TESTFALL-ID: TC_SHOP_SHIPPING_001
+- TITEL: Artikel aus Warenkorb mit Wert über 20 € löschen
+- VORBEDINGUNGEN:
+    - Test-User ist registriert und eingeloggt
+    - Warenkorb ist mit Artikeln gefüllt. Warenkorbwert ist 25 €. Versandkosten = 0 €
+- TESTSCHRITTE/TESTAKTIONEN:
+    - Lösche den Artikel Birchwood Grass Fed 10oz British Beef 36-Day Matured Ribeye Steak für 6.39 aus Warenkorb.
+- ERWARTETES ERGEBNIS:  
+    - Versand springt sofort zurück auf 5,00 €
+    - Hinweis das ab 20 € Versandkostenfrei erscheint wieder.
+- NACHBEDINGUNGEN: 
+    - Warenkorb zurücksetzen
+- RÜCKVERFOLGBARKEIT: 
+    - Anforderung: "Die Anzeige im Warenkorb ändert sich in Echtzeit."
+
+**Testverfahren: Fehlerangriffe**
+- Mehrfach-Klicks: Sehr schnelles mehrmaliges Klicken auf „Artikel löschen“ und schnell Bestellen.
+- Gleichzeitige Tabs: Den Warenkorb in zwei Browser-Tabs öffnen. In Tab 1 einen Artikel löschen (unter 20 € fallen) und in Tab 2 direkt auf „Zur Kasse“ klicken.
+

@@ -451,9 +451,10 @@ Ergibt 3 Testfälle
 - TITEL: Artikel aus Warenkorb mit Wert über 20 € löschen
 - VORBEDINGUNGEN:
     - Test-User ist registriert und eingeloggt
-    - Warenkorb ist mit Artikeln gefüllt. Warenkorbwert ist 25 €. Versandkosten = 0 €
+    - Warenkorb ist mit 4 mal Birchwood Grass Fed 10oz British Beef 36-Day Matured Ribeye Steak für 6.39
+    -  Warenkorbwert ist 25.56€. Versandkosten = 0 €
 - TESTSCHRITTE/TESTAKTIONEN:
-    - Lösche den Artikel Birchwood Grass Fed 10oz British Beef 36-Day Matured Ribeye Steak für 6.39 aus Warenkorb.
+    - Lösche 1 mal den Artikel Birchwood Grass Fed 10oz British Beef 36-Day Matured Ribeye Steak für 6.39 aus Warenkorb.
 - ERWARTETES ERGEBNIS:  
     - Versand springt sofort zurück auf 5,00 €
     - Hinweis das ab 20 € Versandkostenfrei erscheint wieder.

@@ -76,3 +76,38 @@ Tests zur Freitext-Eingabe
 | Rec-Txt-6 | "(<script>alert(1)</script>)" | Eingabe nicht akzeptiert ||
 
 Tests zur nachträglichen Bearbeitung
+| ID | Eingabe | Erwartet | Ergebnis |
+|---|---|---|---|
+| Rec-Edt-1 | User eingeloggt, Kommentar erstellt | Kommentar bearbeitbar/löschbar ||
+| Rec-Edt-2 | User eingeloggt, Kommentar nicht erstellt | Kommentar nicht bearbeitbar/löschbar ||
+| Rec-Edt-3 | User nicht eingeloggt | Kommentar nicht bearbeitbar/löschbar ||
+
+Checkliste zur Darstellung der Bewertung
+[] Die Bewertung wird ohne Fehlermeldung abgesendet und der Dialog schließt sich.
+[] Die Gesamtanzahl der abgegebenen Stimmen in Klammern erhöht sich um +1 (von 21 auf 22).
+[] Der Gesamt-Mittelwert der Sterne wird basierend auf der neuen Note (1 Stern) neu berechnet und angepasst.
+[] Die neue Bewertung erscheint direkt an erster Stelle in der Rezensionsliste unter dem Produkt.
+
+
+### 3. Versandkostenkalkulation
+
+Tests zur Versandkostenkalkulation
+| ID | Eingabe | Erwartet | Ergebnis |
+|---|---|---|---|
+| Shp-Cal-1 | Warenkorb füllen bis 19,99€ | 5€ Versandkosten ||
+| Shp-Cal-2 | Warenkorb füllen auf 20,00€ | 0€ Versandkosten ||
+| Shp-Cal-3 | Warenkorb füllen auf 20,01€ | 0€ Versandkosten ||
+
+Zustandsübergangstest zur Versandkostenkalkulation
+| ID | Aktueller Zustand | Ereignis | Erwarteter Zustand | Ergebnis |
+|---|---|---|---|---|
+| Shp-Flo-1 | Warenkorbwert 0€ | Artikel für 15€ hinzufügen | Warenkorbwert 15€, Versand 5€ Hinweis sichtbar ||
+| Shp-Flo-2 | Warenkorbwert 15€ | Artikel für 10€ hinzufügen | Warenkorbwert 25€, Versand 0€ Hinweis nicht sichtbar ||
+| Shp-Flo-3 | Warenkorbwert 25€ | Artikel für 7€ entfernen | Warenkorbwert 18€, Versand 5€ Hinweis sichtbar ||
+| Shp-Flo-4 |  Warenkorbwert 25€ | Alle Artikel aus Warenkorb löschen | Warenkorbwert 0€, Versand 5€ Hinweis sichtbar ||
+
+Fehlerangriff zu Versandkostenberechnung
+- Mehrfach-Klicks: Sehr schnelles mehrmaliges Klicken auf „Artikel löschen“ und schnell Bestellen.
+- Gleichzeitige Tabs: Den Warenkorb in zwei Browser-Tabs öffnen. In Tab 1 einen Artikel löschen (unter 20 € fallen) und in Tab 2 direkt auf „Zur Kasse“ klicken.
+
+### Performancetest

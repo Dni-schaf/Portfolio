@@ -446,6 +446,8 @@ Ergibt 3 Testfälle
 | Warenkorbwert 25,00 € | Artikel aus Warenkorb löschen | Neuer Warenkorbwert 18,00 € | Versand springt sofort zurück auf 5,00 €, Hinweis erscheint wieder.|
 | Warenkorbwert 25,00 € | Alle Artikel aus Warenkorb löschen | Initial (Leer) |  Versand springt sofort zurück auf 5,00 €, Hinweis erscheint wieder.|
 
+Ergibt 4 Testfälle
+
 **Beispieltestfall**
 - TESTFALL-ID: TC_SHOP_SHIPPING_001
 - TITEL: Artikel aus Warenkorb mit Wert über 20 € löschen

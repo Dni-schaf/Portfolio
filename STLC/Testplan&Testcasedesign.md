@@ -196,7 +196,7 @@ Fehlerangriffe, Checklisten, Explorative Testverfahren
 | Ist User eingeloggt?               | T      | T      | F      | F      | -      |
 | Ist das Geburtsdatum gespeichert?  | T      | F      | F      | T      | -      |
 | versucht User auf Shop zuzugreifen?| T      | T      | T      | T      | F      |
-| Dann: Popup zeigen?                | F      | T      | T      | F      | F      |
+| Dann: Popup zeigen?                | F      | T      | T      | T      | F      |
 
 Es ergeben sich daraus 5 Testfälle
 

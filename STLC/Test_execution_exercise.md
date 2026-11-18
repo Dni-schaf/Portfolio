@@ -6,24 +6,23 @@ Testdurchführung 18.11.2026
 Tests zum Erscheinen des Alterspopup
 | ID | Eingabe | Erwartet | Ergebnis |
 |---|---|---|---|
-| Age-Pop-1 | User eingeloggt, Geburtsdatum gespeichert, Zugriffversuch auf Shop| kein Popup ||
-| Age-Pop-2 | User eingeloggt, Geburtsdatum nicht gespeichert, Zugriffversuch auf Shop| Popup erscheint ||
-| Age-Pop-3 | User nicht eingeloggt, Geburtsdatum nicht gespeichert, Zugriffversuch auf Shop| Popup erscheint ||
-| Age-Pop-4 | User nicht eingeloggt, - , Zugriffversuch auf Shop | Popup erscheint ||
-| Age-Pop-5 | Kein Zugriffsversuch auf Shopseite | kein Popup ||
+| Age-Pop-1 | User eingeloggt, Geburtsdatum gespeichert, Zugriffversuch auf Shop| kein Popup | pass |
+| Age-Pop-2 | User eingeloggt, Geburtsdatum nicht gespeichert, Zugriffversuch auf Shop| Popup erscheint | pass |
+| Age-Pop-5 | User nicht eingeloggt, Zugriffversuch auf Shop | Popup erscheint | pass |
+| Age-Pop-6 | Kein Zugriffsversuch auf Shopseite | kein Popup | pass |
 
 Tests zur Geburtsdatumseingabe
 | ID | Eingabe | Erwartet | Ergebnis |
 |---|---|---|---|
-| Age-Val-1 | 18.11.2008 | Alkohol mit angezeigt ||
-| Age-Val-2 | 19.11.2008 | Alkohol ausgeblendet ||
-| Age-Val-3 | 17.11.2008 | Alkohol mit angezeigt ||
-| Age-Val-4 | 18.11.1876 | Alkohol mit angezeigt ||
-| Age-Val-5 | 18.11.1875 | Fehlermeldung (ungültiges Datum) ||
-| Age-Val-6 | 19.11.2026 | Fehlermeldung (ungültiges Datum) ||
-| Age-Val-7 | 18.11.2026 | Alkohol ausgeblendet ||
-| Age-Val-8 | 40.13.2026 | Fehlermeldung (ungültiges Datum) ||
-| Age-Val-9 | achtzehn | Fehlermeldung (ungültiges Datum) ||
+| Age-Val-1 | 18-11-2008 | Alkohol mit angezeigt | pass |
+| Age-Val-2 | 19-11-2008 | Alkohol ausgeblendet | pass |
+| Age-Val-3 | 17-11-2008 | Alkohol mit angezeigt | pass |
+| Age-Val-4 | 18-11-1876 | Alkohol mit angezeigt | pass |
+| Age-Val-5 | 18-11-1875 | Fehlermeldung (ungültiges Datum) | failed |
+| Age-Val-6 | 19-11-2026 | Fehlermeldung (ungültiges Datum) | failed (keien Fehlermeldung) |
+| Age-Val-7 | 18-11-2026 | Alkohol ausgeblendet | pass |
+| Age-Val-8 | 40-13-2026 | Fehlermeldung (ungültiges Datum) | failed (keien Fehlermeldung) |
+| Age-Val-9 | achtzehn | Fehlermeldung (ungültiges Datum) | failed (keien Fehlermeldung) |
 
 Fehlerangriff um Geburtsdatum erneut einzugeben
 - Aus- und wieder einloggen

@@ -93,20 +93,20 @@ Checkliste zur Darstellung der Bewertung
 Tests zur Versandkostenkalkulation
 | ID | Eingabe | Erwartet | Ergebnis |
 |---|---|---|---|
-| Shp-Cal-1 | Warenkorb füllen bis 19,99€ | 5€ Versandkosten ||
-| Shp-Cal-2 | Warenkorb füllen auf 20,00€ | 0€ Versandkosten ||
-| Shp-Cal-3 | Warenkorb füllen auf 20,01€ | 0€ Versandkosten ||
+| Shp-Cal-1 | Warenkorb füllen bis 19,99€ | 5€ Versandkosten | pass |
+| Shp-Cal-2 | Warenkorb füllen auf 20,00€ | 0€ Versandkosten | pass |
+| Shp-Cal-3 | Warenkorb füllen auf 20,01€ | 0€ Versandkosten | pass |
 
 Zustandsübergangstest zur Versandkostenkalkulation
 | ID | Aktueller Zustand | Ereignis | Erwarteter Zustand | Ergebnis |
 |---|---|---|---|---|
-| Shp-Flo-1 | Warenkorbwert 0€ | Artikel für 15€ hinzufügen | Warenkorbwert 15€, Versand 5€ Hinweis sichtbar ||
-| Shp-Flo-2 | Warenkorbwert 15€ | Artikel für 10€ hinzufügen | Warenkorbwert 25€, Versand 0€ Hinweis nicht sichtbar ||
-| Shp-Flo-3 | Warenkorbwert 25€ | Artikel für 7€ entfernen | Warenkorbwert 18€, Versand 5€ Hinweis sichtbar ||
-| Shp-Flo-4 |  Warenkorbwert 25€ | Alle Artikel aus Warenkorb löschen | Warenkorbwert 0€, Versand 5€ Hinweis sichtbar ||
+| Shp-Flo-1 | Warenkorbwert 0€ | Artikel für 15€ hinzufügen | Warenkorbwert 15€, Versand 5€ Hinweis sichtbar | pass |
+| Shp-Flo-2 | Warenkorbwert 15€ | Artikel für 10€ hinzufügen | Warenkorbwert 25€, Versand 0€ Hinweis nicht sichtbar | pass |
+| Shp-Flo-3 | Warenkorbwert 25€ | Artikel für 7€ entfernen | Warenkorbwert 18€, Versand 5€ Hinweis sichtbar | FAILED |
+| Shp-Flo-4 | Warenkorbwert 25€ | Alle Artikel aus Warenkorb löschen | Warenkorbwert leer | pass |
 
 Fehlerangriff zu Versandkostenberechnung
-- Mehrfach-Klicks: Sehr schnelles mehrmaliges Klicken auf „Artikel löschen“ und schnell Bestellen.
-- Gleichzeitige Tabs: Den Warenkorb in zwei Browser-Tabs öffnen. In Tab 1 einen Artikel löschen (unter 20 € fallen) und in Tab 2 direkt auf „Zur Kasse“ klicken.
+- Mehrfach-Klicks: Sehr schnelles mehrmaliges Klicken auf „Artikel löschen“ und schnell Bestellen. - pass
+- Gleichzeitige Tabs: Den Warenkorb in zwei Browser-Tabs öffnen. In Tab 1 einen Artikel löschen (unter 20 € fallen) und in Tab 2 direkt auf „Zur Kasse“ klicken. - pass
 
 ### Performancetest

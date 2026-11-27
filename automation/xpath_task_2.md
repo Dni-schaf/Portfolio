@@ -1,7 +1,9 @@
 #### 1. Schreibe das XPath zu dem Login-Button.
 
 > //*[@id="root"]/div/div[1]/div[2]/div[2]/div[1]
+
 oder
+
 > //div[contains(@class,'social-icon-cont')]//div[contains(@class,'headerIcon')][1]
 
 
@@ -31,4 +33,12 @@ oder
 
 #### 4. Schreibe das XPath der "Confirm"-Schaltfläche, die du im Modal sehen kannst.
 
-#### 5. 1. Gehe zur **Shop-**Seite und schreibe das **XPath** für das **Mengeneingabefeld von Orangen**, die **"Add to cart"**Schaltfläche für Orangen und die **"Add to wish list"**Schaltfläche für Orangen.
+> //div[@class='modal-content']//button[text()='Confirm']
+
+#### 5. Schreibe das **XPath** für das **Mengeneingabefeld von Orangen**, die **"Add to cart"** Schaltfläche für Orangen und die **"Add to wish list"** Schaltfläche für Orangen.
+
+> //p[contains(@class, 'lead') and text()='Oranges']/ancestor::div[contains(@class,'card')]//input[@type='number']
+
+> //p[contains(@class, 'lead') and text()='Oranges']/ancestor::div[contains(@class,'card')]//button[contains(@class, 'btn-cart')]
+
+> //p[contains(@class, 'lead') and text()='Oranges']/ancestor::div[contains(@class,'card')]//button[text()='❤']

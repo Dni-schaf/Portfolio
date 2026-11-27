@@ -11,31 +11,31 @@
 > //h4[text()='Jane Smith']
 
 #### 5. Schreibe das XPath, um die Beschreibung (die sich im Absatz befindet) der **SEO Services** auszuwählen.
-> //h3[text()='SEO Services']/ancestor::div[@class='service-item']//p
+> //h3[text()='SEO Services']/ancestor::div[contains(@class,'service-item')]//p
 
 #### 6. Schreibe einen XPath-Ausdruck, um alle Service-Elemente im Abschnitt "**Our Services**" auszuwählen.
-> //div[@class='service-item']
+> //section[@id='services']//div[contains(@class,'service-item')]
 
 #### 7. Wie lautet das XPath, um das **E-Mail-Eingabefeld** im Kontaktformular auszuwählen?
 > //input[@id='email']
 
 #### 8. Wie würdest du ein XPath schreiben, um das **gesamte Kontaktformular** auszuwählen?
-> //section[@id='contact']
+> //section[@id='contact']//form
 
 #### 9. Gib das XPath an, um das **Footer-Absatz-Element** auszuwählen.
 > //footer//p[contains(text(),'Company Name')]
 
 #### 10. Was ist das XPath, um den Namen (`<h4>`) des **ersten Teammitglieds** auszuwählen?
-> //li[1]//h4
+> //div[@class='team']//li[1]//h4
 
 #### 11. Wie kannst du mit XPath die Beschreibung des **zweiten Service-Elements** auswählen?
-> //div[@class='service-list']//div[2]
+> //section[@id='services']//div[contains(@class,'service-item')][2]//p
 
 #### 12. Was ist das XPath, um die Überschrift der Sektion **"Contact Us"** (`<h2>`Element) auszuwählen?
 > //section[@id='contact']//h2
 
 #### 13. Schreibe einen XPath-Ausdruck, um alle Links innerhalb des Dropdowns unter dem Navigationspunkt **"Services"** auszuwählen.
-> //a[@href = '#services']//[li]
+> //a[@href='#services']/following-sibling::ul[@class='dropdown']//a
 
 #### 14. Was ist das XPath, um das erste `<li>` im Abschnitt **"Our Team"** auszuwählen?
 > //h3[text()='Our Team']//li[1]
